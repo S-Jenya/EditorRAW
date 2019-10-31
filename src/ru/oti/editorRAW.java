@@ -12,19 +12,20 @@ public class editorRAW {
     public static void main(String[] args) throws FileNotFoundException {
 	// write your code here
         String line;
-        String x = "ExposureMode";
+        int v;
 
-        File file = new File("C:\\Users\\User\\Desktop\\IMG_5425.xmp");
+        File file = new File("D:\\Project\\Java\\Editor\\src\\ru\\oti\\Files\\test.xmp");
         Scanner scanner = new Scanner(file);
 
         while (scanner.hasNextLine()){
             line = scanner.nextLine();
-            int start = line.indexOf(':');
-            int end = line.indexOf('=');
-            String str = line.substring(start+1, end);
-           
-            if("ExposureMode".equals(str)){
-                System.out.printf("String: " + str + "\n");
+            String strExposureMode = line.substring(line.indexOf(':')+1, line.indexOf('='));
+            String valueExposureMode = line.substring(line.indexOf('=') + 2,  line.length()-1);
+
+            if("ExposureMode".equals(strExposureMode)){
+                System.out.println("String: " + strExposureMode + "\t" + "Value: " + valueExposureMode);
+                v = Integer.parseInt(valueExposureMode);
+                System.out.println("Integer value my Exp = : " + v);
                 break;
             }
 
