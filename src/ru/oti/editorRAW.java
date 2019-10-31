@@ -1,7 +1,6 @@
 package ru.oti;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 
@@ -9,13 +8,15 @@ public class editorRAW {
 
 
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 	// write your code here
         String line;
         int v;
 
         File file = new File("D:\\Project\\Java\\Editor\\src\\ru\\oti\\Files\\test.xmp");
         Scanner scanner = new Scanner(file);
+        FileWriter write = new FileWriter("D:\\Project\\Java\\Editor\\src\\ru\\oti\\Files\\test.xmp");
+
 
         while (scanner.hasNextLine()){
             line = scanner.nextLine();
@@ -25,9 +26,13 @@ public class editorRAW {
             if("ExposureMode".equals(strExposureMode)){
                 System.out.println("String: " + strExposureMode + "\t" + "Value: " + valueExposureMode);
                 v = Integer.parseInt(valueExposureMode);
+                write.write("exif:ExposureMode=\"-1\"");
+                write.close();
                 System.out.println("Integer value my Exp = : " + v);
-                break;
+//                break;
             }
+
+            write.write("line");
 
         }
 
